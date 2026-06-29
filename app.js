@@ -71,15 +71,16 @@ let trackMode = false
 let lastClick = ""
 let lastClickCheck
 let squaresForSearch = [...squers]
+let current
 
 /* دالة المحل الحالي */
 let addPadding = (event) => {
-    if(event.target.spellcheck === true){
-        if (lastClick == ""){
+    if (event.target.spellcheck === true) {
+        if (lastClick == "") {
             // هذا الي اعتبرته مؤشر للمكان، وهو شي غبي ما له قيمة موجود في كل عنصر.
-        event.target.spellcheck = false
-        lastClick = event.target.id
-        event.target.style.border ="blue solid 2px"
+            event.target.spellcheck = false
+            lastClick = event.target.id
+            event.target.style.border = "blue solid 2px"
         }
         else {
             //إزالة العلامة القديمة
@@ -90,42 +91,92 @@ let addPadding = (event) => {
             //وضع العلامة الجديدة
             event.target.spellcheck = false
             lastClick = event.target.id
-            event.target.style.border ="blue solid 2px"
+            event.target.style.border = "blue solid 2px"
         }
     }
-    else{
+    else {
         event.target.spellcheck = true
         event.target.style.border = "#939598 1px solid"
     }
-} 
+}
 /* دالة فرعية، لوظائف الدوال */
-let numericFunctionFuns = (event) =>{
-    if (event.target.spellcheck === true && event.target.id == "trac-pen"){
+let numericFunctionFuns = (event) => {
+    if (event.target.spellcheck === true && event.target.id == "trac-pen") {
         event.target.spellcheck = false
-        event.target.style.backgroundColor ="blue"
+        event.target.style.backgroundColor = "blue"
+
     }
-    else if (event.target.spellcheck === true){
+    else if (event.target.spellcheck === true) {
         event.target.spellcheck = false
     }
     else {
-        event.target.style.backgroundColor =""
+        event.target.style.backgroundColor = ""
+        event.target.spellcheck === true
     }
 }
 /* دالة فرعية لإدخال الأرقام (الكبيرة والصغيرة والمتتبعة) */
-let numericFunctionNums = (event) =>{
-    
+let numericFunctionNums = (event) => {
+    console.log(lastClick)
+    console.log()
+    current = squaresForSearch.find(sqr => sqr.id === String(lastClick))
+    if (Boolean(current)) {
+        current.textContent = event.target.textContent
+    }
 }
 
 let numericFunction = (event) => {
-    if (event.target.classList[0] == "funs"){
+    if (event.target.classList[0] == "funs") {
         numericFunctionFuns(event)
     }
-    if(event.target.classList[0] == "num"){
+    if (event.target.classList[0] == "num") {
         numericFunctionNums(event)
     }
 
 }
 
+let rowCodition = true
+let colomnCondition = true
+let adjacentCondition = true
+let chicker = (num, position) => {
+
+    for (let i = 1; i <= 9; i++) {
+        //للصف
+        if (String(num) === squaresForSearch.find(sqr =>
+            sqr.id == String(
+                String(position).slice(0, 6) +
+                String(i)
+            )
+        ).textContent) {
+            rowCodition = false
+        }
+        //للعمود
+        if (String(num) === squaresForSearch.find(sqr =>
+            sqr.id == String(
+                String(position).slice(0, 4) +
+                String(i) +
+                String(position).slice(5, 7)
+            )
+        ).textContent) {
+            colomnCondition = false
+        }
+    }
+    for (let j = -1; j <= 1; j++) {
+        for (let i = -1; i <= 1; i++) {
+            if (String(num) === squaresForSearch.find(sqr =>
+                sqr.id == String(
+                    String(position).slice(0, 4) +
+                    String(Number(String(position).slice(4, 5)) + j) +
+                    String(position).slice(5, 6) +
+                    String(Number(String(position).slice(6, 7)) + i)
+                )
+            ).textContent) {
+                adjacentCondition = false
+            }
+        }
+    }
+}
+
+console.log(String(String("position").slice(0, 6) + String(5)))
 
 console.log(squers)
 console.log(buttons)
