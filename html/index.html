@@ -13,3 +13,124 @@
 
  الواجهة فيها الخيارات الرأيسة متوسطة للصفحة مع صورة في البداية وخيارات الألعاب.
   -->
+ <!DOCTYPE html>
+ <html lang="ar">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سودوكو القنبلة</title>
+    <script defer src="../app.js"></script>
+    <link rel="stylesheet" href="../style.css">
+ </head>
+ <body>
+    <header>
+        <nav>
+
+        </nav>
+        <h1> سودوكو القنبلة </h1>
+    </header>
+    <main>
+        <p id="message"> املأ الشبكة بحيث يحتوي كل صف وكل عمود على الأرقام من 1 إلى 9 <span id="once">مرةً يتيمة</span>. أضف إليه شرط عدم وجود الرقم نفسه في محيطه، أي لا يتجاور الرقم مع نفسه حتى وإن كان التجاور قطريا، تخيل أن كل رقم بمثابة قنبلة تنفجر في الخلايا الثماني المحيطة به؛ يجب أن تضع الأرقام بحيث لا يتمكن أي رقم من "مهاجمة" نفسه. الدائرة وسط اللوحة موجودة لتذكيرك بشرط القنبلة. كن حذرًا، فمن السهل أن تنسى شرط القنبلة. </p>
+        <div id="game">
+            <div id="row-1-1" class="sqr"></div>
+            <div id="row-1-2" class="sqr"></div>
+            <div id="row-1-3" class="sqr"></div>
+            <div id="row-1-4" class="sqr"></div>
+            <div id="row-1-5" class="sqr"></div>
+            <div id="row-1-6" class="sqr"></div>
+            <div id="row-1-7" class="sqr"></div>
+            <div id="row-1-8" class="sqr"></div>
+            <div id="row-1-9" class="sqr"></div>
+            <div id="row-2-1" class="sqr"></div>
+            <div id="row-2-2" class="sqr"></div>
+            <div id="row-2-3" class="sqr"></div>
+            <div id="row-2-4" class="sqr"></div>
+            <div id="row-2-5" class="sqr"></div>
+            <div id="row-2-6" class="sqr"></div>
+            <div id="row-2-7" class="sqr"></div>
+            <div id="row-2-8" class="sqr"></div>
+            <div id="row-2-9" class="sqr"></div>
+            <div id="row-3-1" class="sqr"></div>
+            <div id="row-3-2" class="sqr"></div>
+            <div id="row-3-3" class="sqr"></div>
+            <div id="row-3-4" class="sqr"></div>
+            <div id="row-3-5" class="sqr"></div>
+            <div id="row-3-6" class="sqr"></div>
+            <div id="row-3-7" class="sqr"></div>
+            <div id="row-3-8" class="sqr"></div>
+            <div id="row-3-9" class="sqr"></div>
+            <div id="row-4-1" class="sqr"></div>
+            <div id="row-4-2" class="sqr"></div>
+            <div id="row-4-3" class="sqr"></div>
+            <div id="row-4-4" class="sqr"></div>
+            <div id="row-4-5" class="sqr"></div>
+            <div id="row-4-6" class="sqr"></div>
+            <div id="row-4-7" class="sqr"></div>
+            <div id="row-4-8" class="sqr"></div>
+            <div id="row-4-9" class="sqr"></div>
+            <div id="row-5-1" class="sqr"></div>
+            <div id="row-5-2" class="sqr"></div>
+            <div id="row-5-3" class="sqr"></div>
+            <div id="row-5-4" class="sqr"></div>
+            <div id="row-5-5" class="sqr"></div>
+            <div id="row-5-6" class="sqr"></div>
+            <div id="row-5-7" class="sqr"></div>
+            <div id="row-5-8" class="sqr"></div>
+            <div id="row-5-9" class="sqr"></div>
+            <div id="row-6-1" class="sqr"></div>
+            <div id="row-6-2" class="sqr"></div>
+            <div id="row-6-3" class="sqr"></div>
+            <div id="row-6-4" class="sqr"></div>
+            <div id="row-6-5" class="sqr"></div>
+            <div id="row-6-6" class="sqr"></div>
+            <div id="row-6-7" class="sqr"></div>
+            <div id="row-6-8" class="sqr"></div>
+            <div id="row-6-9" class="sqr"></div>
+            <div id="row-7-1" class="sqr"></div>
+            <div id="row-7-2" class="sqr"></div>
+            <div id="row-7-3" class="sqr"></div>
+            <div id="row-7-4" class="sqr"></div>
+            <div id="row-7-5" class="sqr"></div>
+            <div id="row-7-6" class="sqr"></div>
+            <div id="row-7-7" class="sqr"></div>
+            <div id="row-7-8" class="sqr"></div>
+            <div id="row-7-9" class="sqr"></div>
+            <div id="row-8-1" class="sqr"></div>
+            <div id="row-8-2" class="sqr"></div>
+            <div id="row-8-3" class="sqr"></div>
+            <div id="row-8-4" class="sqr"></div>
+            <div id="row-8-5" class="sqr"></div>
+            <div id="row-8-6" class="sqr"></div>
+            <div id="row-8-7" class="sqr"></div>
+            <div id="row-8-8" class="sqr"></div>
+            <div id="row-8-9" class="sqr"></div>
+            <div id="row-9-1" class="sqr"></div>
+            <div id="row-9-2" class="sqr"></div>
+            <div id="row-9-3" class="sqr"></div>
+            <div id="row-9-4" class="sqr"></div>
+            <div id="row-9-5" class="sqr"></div>
+            <div id="row-9-6" class="sqr"></div>
+            <div id="row-9-7" class="sqr"></div>
+            <div id="row-9-8" class="sqr"></div>
+            <div id="row-9-9" class="sqr"></div>
+        </div>
+
+    </main>
+    <footer>
+        <button class="funs input" id="pen" title="Speed Pen">✏️</button>
+        <button class="funs input" id="trac-pen" title="Trac Mode">🖊️</button>
+        <button class="funs input" id="normal">Narmal</button>
+
+        <button class="num input" id="1">1</button>
+        <button class="num input" id="2">2</button>
+        <button class="num input" id="3">3</button>
+        <button class="num input" id="4">4</button>
+        <button class="num input" id="5">5</button>
+        <button class="num input" id="6">6</button>
+        <button class="num input" id="7">7</button>
+        <button class="num input" id="8">8</button>
+        <button class="num input" id="9">9</button>
+    </footer>
+    
+ </body>
+ </html>
