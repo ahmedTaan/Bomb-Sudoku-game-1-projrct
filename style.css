@@ -36,8 +36,54 @@ background: radial-gradient(circle 200px at center, #C6C8CA 100%, white 100%);}
     display: flex;
     align-items: center;
     justify-content: center;
-    
+    margin: 0;
+    position: relative;
+    z-index: 3;
 }
+.pencil{
+    position: absolute;
+    z-index: 1;
+    font-size: 5px;
+    opacity: 0.5;
+}
+#span-1{
+    top: calc(50% + 18px * sin(200deg));
+    left: calc(50% + 18px * cos(200deg));
+}
+#span-2{
+    top: calc(50% + 18px * sin(240deg));
+    left: calc(50% + 18px * cos(240deg));
+}
+#span-3{
+    top: calc(50% + 18px * sin(280deg));
+    left: calc(50% + 18px * cos(280deg));
+}
+#span-4{
+    top: calc(50% + 18px * sin(320deg));
+    left: calc(50% + 18px * cos(320deg));
+}
+#span-5{
+    top: calc(50% + 18px * sin(0deg));
+    left: calc(50% + 18px * cos(0deg));
+}
+#span-6{
+    top: calc(50% + 18px * sin(40deg));
+    left: calc(50% + 18px * cos(40deg));
+}
+#span-7{
+    top: calc(50% + 18px * sin(80deg));
+    left: calc(50% + 18px * cos(80deg));
+}
+#span-8{
+    top: calc(50% + 18px * sin(120deg));
+    left: calc(50% + 18px * cos(120deg));
+}
+#span-9{
+    top: calc(50% + 18px * sin(160deg));
+    left: calc(50% + 18px * cos(160deg));
+}
+
+
 .sqr:active{
 background-color: rgb(170, 170, 255);
 }
@@ -61,5 +107,4 @@ footer{
     border: black solid 2px;
     background-color: bisque;
 }
-
 

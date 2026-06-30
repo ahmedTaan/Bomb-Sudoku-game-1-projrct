@@ -1,5 +1,6 @@
 let squers = document.querySelectorAll(".sqr")
 let buttons = document.querySelectorAll(".input")
+let message = document.querySelector("#message")
 
 /* ملء الشبكة بشكل مبدئي */
 let sqr1 = document.querySelector("#row-1-colomn-8")
@@ -77,12 +78,59 @@ solMatrix = [
     [9,8,1,2,6,3,7,5,4]
 ]
 
+let span1 = document.createElement("span")
+span1.id = "span-1", span1.textContent = "1", span1.classList = "pencil"
+let span2 = document.createElement("span")
+span2.id = "span-2", span2.textContent = "2", span2.classList = "pencil"
+let span3 = document.createElement("span")
+span3.id = "span-3", span3.textContent = "3", span3.classList = "pencil"
+let span4 = document.createElement("span")
+span4.id = "span-4", span4.textContent = "4", span4.classList = "pencil"
+let span5 = document.createElement("span")
+span5.id = "span-5", span5.textContent = "5", span5.classList = "pencil"
+let span6 = document.createElement("span")
+span6.id = "span-6", span6.textContent = "6", span6.classList = "pencil"
+let span7 = document.createElement("span")
+span7.id = "span-7", span7.textContent = "7", span7.classList = "pencil"
+let span8 = document.createElement("span")
+span8.id = "span-8", span8.textContent = "8", span8.classList = "pencil"
+let span9 = document.createElement("span")
+span9.id = "span-9", span9.textContent = "9", span9.classList = "pencil"
+span9.cloneNode(true)
+
+squers[1].appendChild(span9.cloneNode(true))
+squers[1].appendChild(span8.cloneNode(true))
+squers[1].appendChild(span7.cloneNode(true))
+squers[1].appendChild(span6.cloneNode(true))
+squers[1].appendChild(span5.cloneNode(true))
+squers[1].appendChild(span4.cloneNode(true))
+squers[1].appendChild(span3.cloneNode(true))
+squers[1].appendChild(span2.cloneNode(true))
+squers[1].appendChild(span1.cloneNode(true))
+
+squers[2].appendChild(span9.cloneNode(true))
+squers[2].appendChild(span8.cloneNode(true))
+squers[2].appendChild(span7.cloneNode(true))
+squers[2].appendChild(span6.cloneNode(true))
+squers[2].appendChild(span5.cloneNode(true))
+squers[2].appendChild(span4.cloneNode(true))
+squers[2].appendChild(span3.cloneNode(true))
+squers[2].appendChild(span2.cloneNode(true))
+squers[2].appendChild(span1.cloneNode(true))
+
+
+
+
+
+
+
 let penMode = false
 let trackMode = false
 let lastClick = ""
 let lastClickCheck
 let squaresForSearch = [...squers]
 let current
+let position
 let filledSquares = []
 
 squaresForSearch.forEach(sqr => {
@@ -135,11 +183,23 @@ let numericFunctionFuns = (event) => {
 }
 /* دالة فرعية لإدخال الأرقام (الكبيرة والصغيرة والمتتبعة) */
 let numericFunctionNums = (event) => {
-    console.log(lastClick)
-    console.log()
     current = squaresForSearch.find(sqr => sqr.id === String(lastClick))
     if (Boolean(current)) {
-        current.textContent = event.target.textContent
+        position = current
+        position = String(position.id).split("-")
+        if (solMatrix[position[1] - 1][position[3] - 1] == event.target.textContent){
+            current.textContent = event.target.textContent
+            console.log(`${event.target.textContent} is correct answer in ${position}`)
+            filledSquares.push(current)
+            if (filledSquares.length == 81){
+                console.log(filledSquares)
+                message.textContent = "فزت!"
+            }
+        }
+        else{
+
+            console.log(`The solution is ${solMatrix[position[1] - 1][position[3] - 1]}`)
+        }
     }
 }
 
