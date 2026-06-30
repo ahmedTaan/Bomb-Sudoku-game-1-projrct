@@ -2,37 +2,37 @@ let squers = document.querySelectorAll(".sqr")
 let buttons = document.querySelectorAll(".input")
 
 /* ملء الشبكة بشكل مبدئي */
-let sqr1 = document.querySelector("#row-1-8")
-let sqr2 = document.querySelector("#row-1-9")
-let sqr3 = document.querySelector("#row-2-2")
-let sqr4 = document.querySelector("#row-2-3")
-let sqr5 = document.querySelector("#row-2-5")
-let sqr6 = document.querySelector("#row-2-8")
-let sqr7 = document.querySelector("#row-2-9")
-let sqr8 = document.querySelector("#row-3-2")
-let sqr9 = document.querySelector("#row-3-3")
-let sqr10 = document.querySelector("#row-4-1")
-let sqr11 = document.querySelector("#row-4-4")
-let sqr12 = document.querySelector("#row-4-6")
-let sqr13 = document.querySelector("#row-4-9")
-let sqr14 = document.querySelector("#row-5-2")
-let sqr15 = document.querySelector("#row-5-3")
-let sqr16 = document.querySelector("#row-5-5")
-let sqr17 = document.querySelector("#row-5-7")
-let sqr18 = document.querySelector("#row-5-8")
-let sqr19 = document.querySelector("#row-6-1")
-let sqr20 = document.querySelector("#row-6-4")
-let sqr21 = document.querySelector("#row-6-6")
-let sqr22 = document.querySelector("#row-6-9")
-let sqr23 = document.querySelector("#row-7-7")
-let sqr24 = document.querySelector("#row-7-8")
-let sqr25 = document.querySelector("#row-8-1")
-let sqr26 = document.querySelector("#row-8-2")
-let sqr27 = document.querySelector("#row-8-5")
-let sqr28 = document.querySelector("#row-8-7")
-let sqr29 = document.querySelector("#row-8-8")
-let sqr30 = document.querySelector("#row-9-1")
-let sqr31 = document.querySelector("#row-9-2")
+let sqr1 = document.querySelector("#row-1-colomn-8")
+let sqr2 = document.querySelector("#row-1-colomn-9")
+let sqr3 = document.querySelector("#row-2-colomn-2")
+let sqr4 = document.querySelector("#row-2-colomn-3")
+let sqr5 = document.querySelector("#row-2-colomn-5")
+let sqr6 = document.querySelector("#row-2-colomn-8")
+let sqr7 = document.querySelector("#row-2-colomn-9")
+let sqr8 = document.querySelector("#row-3-colomn-2")
+let sqr9 = document.querySelector("#row-3-colomn-3")
+let sqr10 = document.querySelector("#row-4-colomn-1")
+let sqr11 = document.querySelector("#row-4-colomn-4")
+let sqr12 = document.querySelector("#row-4-colomn-6")
+let sqr13 = document.querySelector("#row-4-colomn-9")
+let sqr14 = document.querySelector("#row-5-colomn-2")
+let sqr15 = document.querySelector("#row-5-colomn-3")
+let sqr16 = document.querySelector("#row-5-colomn-5")
+let sqr17 = document.querySelector("#row-5-colomn-7")
+let sqr18 = document.querySelector("#row-5-colomn-8")
+let sqr19 = document.querySelector("#row-6-colomn-1")
+let sqr20 = document.querySelector("#row-6-colomn-4")
+let sqr21 = document.querySelector("#row-6-colomn-6")
+let sqr22 = document.querySelector("#row-6-colomn-9")
+let sqr23 = document.querySelector("#row-7-colomn-7")
+let sqr24 = document.querySelector("#row-7-colomn-8")
+let sqr25 = document.querySelector("#row-8-colomn-1")
+let sqr26 = document.querySelector("#row-8-colomn-2")
+let sqr27 = document.querySelector("#row-8-colomn-5")
+let sqr28 = document.querySelector("#row-8-colomn-7")
+let sqr29 = document.querySelector("#row-8-colomn-8")
+let sqr30 = document.querySelector("#row-9-colomn-1")
+let sqr31 = document.querySelector("#row-9-colomn-2")
 
 sqr1.textContent = "6"
 sqr2.textContent = "7"
@@ -65,6 +65,17 @@ sqr28.textContent = "4"
 sqr29.textContent = "3"
 sqr30.textContent = "9"
 sqr31.textContent = "8"
+solMatrix = [ 
+    [3,5,9,4,1,8,2,6,7],
+    [7,1,2,6,3,4,5,9,8],
+    [2,4,3,5,7,9,8,1,6],
+    [5,9,7,8,2,1,6,4,3],
+    [1,6,4,3,5,7,9,8,2],
+    [4,2,8,1,9,6,3,7,5],
+    [8,3,6,7,4,5,1,2,9],
+    [6,7,5,9,8,2,4,3,1],
+    [9,8,1,2,6,3,7,5,4]
+]
 
 let penMode = false
 let trackMode = false
@@ -72,6 +83,14 @@ let lastClick = ""
 let lastClickCheck
 let squaresForSearch = [...squers]
 let current
+let filledSquares = []
+
+squaresForSearch.forEach(sqr => {
+    if (Boolean(sqr.textContent)){
+        filledSquares.push(sqr)
+    }
+})
+
 
 /* دالة المحل الحالي */
 let addPadding = (event) => {
@@ -111,7 +130,7 @@ let numericFunctionFuns = (event) => {
     }
     else {
         event.target.style.backgroundColor = ""
-        event.target.spellcheck === true
+        event.target.spellcheck = true
     }
 }
 /* دالة فرعية لإدخال الأرقام (الكبيرة والصغيرة والمتتبعة) */
@@ -137,44 +156,76 @@ let numericFunction = (event) => {
 let rowCodition = true
 let colomnCondition = true
 let adjacentCondition = true
-let chicker = (num, position) => {
 
+let rowColomnMatrix = String("row-6-colomn-9").split("-")
+
+
+let checker = (num, position) => {
+
+    rowCodition = true
+    colomnCondition = true
+    adjacentCondition = true
+
+    let rowColomnMatrix = String(position).split("-")
+    
+    //شرط الصفوف
     for (let i = 1; i <= 9; i++) {
-        //للصف
+        rowColomnMatrix[1] = i
         if (String(num) === squaresForSearch.find(sqr =>
             sqr.id == String(
-                String(position).slice(0, 6) +
-                String(i)
+                rowColomnMatrix.join("-")
             )
         ).textContent) {
             rowCodition = false
+            console.log(`I find the row mach at ${rowColomnMatrix.join("-")}`)
         }
-        //للعمود
+    }
+    rowColomnMatrix = String(position).split("-")
+    
+    //شرط الأعمدة
+    for (let i = 1; i <= 9; i++) {
+        rowColomnMatrix[3] = i
         if (String(num) === squaresForSearch.find(sqr =>
             sqr.id == String(
-                String(position).slice(0, 4) +
-                String(i) +
-                String(position).slice(5, 7)
+                rowColomnMatrix.join("-")
             )
         ).textContent) {
             colomnCondition = false
+            console.log(`I find the colomn mach at ${rowColomnMatrix.join("-")}`)
         }
     }
+    //شرط الجوار
     for (let j = -1; j <= 1; j++) {
-        for (let i = -1; i <= 1; i++) {
+        // هذا لأني واجهت مشكلة أنه يعدل على المصفوفة الأصلية بينما أبغيه يعدل على الرقم المعين الي هو فيه.
+        rowColomnMatrix = String(position).split("-")
+        rowColomnMatrix[1] = Number(rowColomnMatrix[1]) + j
+        rowColomnMatrix[3] = Number(rowColomnMatrix[3]) - 2
+
+        if (rowColomnMatrix[1] == 10 || rowColomnMatrix[1] == 0) {
+            continue
+        }
+        for (let i = 1; i <= 3; i++) {
+            rowColomnMatrix[3] = Number(rowColomnMatrix[3]) + 1
+            if (rowColomnMatrix[3] == 10 || rowColomnMatrix[3] == 0) {
+                continue
+            }
             if (String(num) === squaresForSearch.find(sqr =>
                 sqr.id == String(
-                    String(position).slice(0, 4) +
-                    String(Number(String(position).slice(4, 5)) + j) +
-                    String(position).slice(5, 6) +
-                    String(Number(String(position).slice(6, 7)) + i)
+                    rowColomnMatrix.join("-")
                 )
             ).textContent) {
                 adjacentCondition = false
+                console.log(`I find the adjacent maching at ${rowColomnMatrix.join("-")}`)
             }
         }
     }
+    return (rowCodition && colomnCondition && adjacentCondition)
 }
+let winnerFunction = () => {
+
+}
+
+console.log(checker(1, "row-9-colomn-9"))
 
 console.log(String(String("position").slice(0, 6) + String(5)))
 
