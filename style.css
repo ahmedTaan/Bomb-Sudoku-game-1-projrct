@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Chelsea+Market&family=Londrina+Shadow&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Cairo+Play:wght@200..1000&family=Chelsea+Market&family=Londrina+Shadow&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap');
 *{
     box-sizing: border-box;
 }
@@ -7,8 +9,7 @@ body{
     justify-content:center;
     align-items: center;
     flex-wrap: wrap;
-    background-color: aqua;
-
+    background-color: #939598;
 }
 main{
     display: flex;
@@ -17,6 +18,7 @@ main{
     align-items: center;
 }
 #game{
+    font-family: "Titillium Web";
     border: black solid 2px;
     margin: 0;
 
@@ -47,39 +49,39 @@ background: radial-gradient(circle 200px at center, #C6C8CA 100%, white 100%);}
     opacity: 0.5;
 }
 #span-1{
-    top: calc(45% + 18px * sin(200deg));
+    top: calc(40% + 18px * sin(200deg));
     left: calc(45% + 18px * cos(200deg));
 }
 #span-2{
-    top: calc(45% + 18px * sin(240deg));
+    top: calc(40% + 18px * sin(240deg));
     left: calc(45% + 18px * cos(240deg));
 }
 #span-3{
-    top: calc(45% + 18px * sin(280deg));
+    top: calc(40% + 18px * sin(280deg));
     left: calc(45% + 18px * cos(280deg));
 }
 #span-4{
-    top: calc(45% + 18px * sin(320deg));
+    top: calc(40% + 18px * sin(320deg));
     left: calc(45% + 18px * cos(320deg));
 }
 #span-5{
-    top: calc(45% + 18px * sin(0deg));
+    top: calc(40% + 18px * sin(0deg));
     left: calc(45% + 18px * cos(0deg));
 }
 #span-6{
-    top: calc(45% + 18px * sin(40deg));
+    top: calc(40% + 18px * sin(40deg));
     left: calc(45% + 18px * cos(40deg));
 }
 #span-7{
-    top: calc(45% + 18px * sin(80deg));
+    top: calc(40% + 18px * sin(80deg));
     left: calc(45% + 18px * cos(80deg));
 }
 #span-8{
-    top: calc(45% + 18px * sin(120deg));
+    top: calc(40% + 18px * sin(120deg));
     left: calc(45% + 18px * cos(120deg));
 }
 #span-9{
-    top: calc(45% + 18px * sin(160deg));
+    top: calc(40% + 18px * sin(160deg));
     left: calc(45% + 18px * cos(160deg));
 }
 
@@ -90,6 +92,7 @@ background-color: rgb(170, 170, 255);
 #message{
     width: 400px;
     text-align: center;
+    font-family: "Amiri";
 }
 #once{
     font-weight: bold;
@@ -106,5 +109,8 @@ footer{
     height: 30px;
     border: black solid 2px;
     background-color: bisque;
+    font-family: "Titillium Web"
 }
-
+h1{
+    font-family: "Cairo Play";
+}

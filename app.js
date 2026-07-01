@@ -1,71 +1,20 @@
 let squers = document.querySelectorAll(".sqr")
 let buttons = document.querySelectorAll(".input")
 let message = document.querySelector("#message")
+let game = document.querySelector("#game")
 let pen = document.getElementById("pen")
 /* 0_ ملء الشبكة بشكل مبدئي */
-let sqr1 = document.querySelector("#row-1-colomn-8")
-let sqr2 = document.querySelector("#row-1-colomn-9")
-let sqr3 = document.querySelector("#row-2-colomn-2")
-let sqr4 = document.querySelector("#row-2-colomn-3")
-let sqr5 = document.querySelector("#row-2-colomn-5")
-let sqr6 = document.querySelector("#row-2-colomn-8")
-let sqr7 = document.querySelector("#row-2-colomn-9")
-let sqr8 = document.querySelector("#row-3-colomn-2")
-let sqr9 = document.querySelector("#row-3-colomn-3")
-let sqr10 = document.querySelector("#row-4-colomn-1")
-let sqr11 = document.querySelector("#row-4-colomn-4")
-let sqr12 = document.querySelector("#row-4-colomn-6")
-let sqr13 = document.querySelector("#row-4-colomn-9")
-let sqr14 = document.querySelector("#row-5-colomn-2")
-let sqr15 = document.querySelector("#row-5-colomn-3")
-let sqr16 = document.querySelector("#row-5-colomn-5")
-let sqr17 = document.querySelector("#row-5-colomn-7")
-let sqr18 = document.querySelector("#row-5-colomn-8")
-let sqr19 = document.querySelector("#row-6-colomn-1")
-let sqr20 = document.querySelector("#row-6-colomn-4")
-let sqr21 = document.querySelector("#row-6-colomn-6")
-let sqr22 = document.querySelector("#row-6-colomn-9")
-let sqr23 = document.querySelector("#row-7-colomn-7")
-let sqr24 = document.querySelector("#row-7-colomn-8")
-let sqr25 = document.querySelector("#row-8-colomn-1")
-let sqr26 = document.querySelector("#row-8-colomn-2")
-let sqr27 = document.querySelector("#row-8-colomn-5")
-let sqr28 = document.querySelector("#row-8-colomn-7")
-let sqr29 = document.querySelector("#row-8-colomn-8")
-let sqr30 = document.querySelector("#row-9-colomn-1")
-let sqr31 = document.querySelector("#row-9-colomn-2")
-
-sqr1.textContent = "6"
-sqr2.textContent = "7"
-sqr3.textContent = "1"
-sqr4.textContent = "2"
-sqr5.textContent = "3"
-sqr6.textContent = "9"
-sqr7.textContent = "8"
-sqr8.textContent = "4"
-sqr9.textContent = "3"
-sqr10.textContent = "5"
-sqr11.textContent = "8"
-sqr12.textContent = "1"
-sqr13.textContent = "3"
-sqr14.textContent = "6"
-sqr15.textContent = "4"
-sqr16.textContent = "5"
-sqr17.textContent = "9"
-sqr18.textContent = "8"
-sqr19.textContent = "4"
-sqr20.textContent = "1"
-sqr21.textContent = "6"
-sqr22.textContent = "5"
-sqr23.textContent = "1"
-sqr24.textContent = "2"
-sqr25.textContent = "6"
-sqr26.textContent = "7"
-sqr27.textContent = "8"
-sqr28.textContent = "4"
-sqr29.textContent = "3"
-sqr30.textContent = "9"
-sqr31.textContent = "8"
+let Matrix = [
+    [ , , , , , , ,6,7],
+    [ ,1,2, ,3, , ,9,8],
+    [ ,4,3, , , , , , ],
+    [5, , ,8, ,1, , ,3],
+    [ ,6,4, ,5, ,9,8, ],
+    [4, , ,1, ,6, , ,5],
+    [ , , , , , ,1,2, ],
+    [6,7, , ,8, ,4,3, ],
+    [9,8, , , , , , , ]
+]
 solMatrix = [
     [3, 5, 9, 4, 1, 8, 2, 6, 7],
     [7, 1, 2, 6, 3, 4, 5, 9, 8],
@@ -77,52 +26,12 @@ solMatrix = [
     [6, 7, 5, 9, 8, 2, 4, 3, 1],
     [9, 8, 1, 2, 6, 3, 7, 5, 4]
 ]
+Matrix.forEach((matrix, matrixIndex) => matrix.forEach(
+    (cell, index)=>{
+        squers[9*matrixIndex+index].textContent = cell
+    }
+))
 
-/* let span1 = document.createElement("span")
-span1.id = "span-1", span1.textContent = "1", span1.classList = "pencil"
-let span2 = document.createElement("span")
-span2.id = "span-2", span2.textContent = "2", span2.classList = "pencil"
-let span3 = document.createElement("span")
-span3.id = "span-3", span3.textContent = "3", span3.classList = "pencil"
-let span4 = document.createElement("span")
-span4.id = "span-4", span4.textContent = "4", span4.classList = "pencil"
-let span5 = document.createElement("span")
-span5.id = "span-5", span5.textContent = "5", span5.classList = "pencil"
-let span6 = document.createElement("span")
-span6.id = "span-6", span6.textContent = "6", span6.classList = "pencil"
-let span7 = document.createElement("span")
-span7.id = "span-7", span7.textContent = "7", span7.classList = "pencil"
-let span8 = document.createElement("span")
-span8.id = "span-8", span8.textContent = "8", span8.classList = "pencil"
-let span9 = document.createElement("span")
-span9.id = "span-9", span9.textContent = "9", span9.classList = "pencil"
- */
-/* squers[13].appendChild(span9.cloneNode(true))
-squers[13].appendChild(span8.cloneNode(true))
-squers[13].appendChild(span7.cloneNode(true))
-squers[13].appendChild(span6.cloneNode(true))
-squers[13].appendChild(span5.cloneNode(true))
-squers[13].appendChild(span4.cloneNode(true))
-squers[13].appendChild(span3.cloneNode(true))
-squers[13].appendChild(span2.cloneNode(true))
-squers[13].appendChild(span1.cloneNode(true))
-
-
-squers[2].appendChild(span9.cloneNode(true))
-squers[2].appendChild(span8.cloneNode(true))
-squers[2].appendChild(span7.cloneNode(true))
-squers[2].appendChild(span6.cloneNode(true))
-squers[2].appendChild(span5.cloneNode(true))
-squers[2].appendChild(span4.cloneNode(true))
-squers[2].appendChild(span3.cloneNode(true))
-squers[2].appendChild(span2.cloneNode(true))
-squers[2].appendChild(span1.cloneNode(true))
-
-squers[2].removeChild(squers[2].querySelector("#span-1"))
- */
-
-let penMode = false
-let trackMode = false
 let lastClick = ""
 let lastClickCheck
 let squaresForSearch = [...squers]
@@ -149,26 +58,29 @@ let addPadding = (event) => {
             event.target.spellcheck = false
             lastClick = event.target.id
             event.target.style.border = "blue solid 2px"
+            event.target.style.borderRadius = "20%"
         }
         else {
             //إزالة العلامة القديمة
             lastClickCheck = squaresForSearch.find(sqre => sqre.id === lastClick)
             lastClickCheck.style.border = "#939598 1px solid"
+            lastClickCheck.style.borderRadius = "0"
             lastClickCheck.spellcheck = true
 
             //وضع العلامة الجديدة
             event.target.spellcheck = false
             lastClick = event.target.id
             event.target.style.border = "blue solid 2px"
+            event.target.style.borderRadius = "20%"
         }
     }
     else {
         //إزالة العلامة إذا ضغط عليها وهي مفعلة.
         event.target.spellcheck = true
         event.target.style.border = "#939598 1px solid"
+        event.target.style.borderRadius = "0"
     }
 }
-
 // 2_ دالة بايخة بس تطرش لدالة الأرقام إذا كان رقم ولدالة الدوال إذا كانت دالة
 let numericFunction = (event) => {
     if (event.target.classList[0] == "funs") {
@@ -185,15 +97,23 @@ let numericFunctionNums = (event) => {
     if (Boolean(current)) {
         position = current
         position = String(position.id).split("-")
+        //للأرقام الكبيرة
         if (solMatrix[position[1] - 1][position[3] - 1] == event.target.textContent && pen.spellcheck == true
         ) {
             current.textContent = event.target.textContent
             console.log(`${event.target.textContent} is correct answer in ${position}`)
             filledSquares.push(current)
+            current.style.border = "green solid 2px"
+            current.style.borderRadius = "20%"
+            current.style.backgroundColor = "#95ff8f"
+            setTimeout(()=>{
+                current.style.backgroundColor = ""
+            }, 1000)
             if (filledSquares.length == 81) {
                 message.textContent = "فزت!"
             }
         }
+        // للأرقام الصغيرة
         else if (pen.spellcheck == false) {
             position = (Number(position[1]) - 1) * 9 + Number(position[3]) - 1
             if (Boolean(squers[position].querySelector(String("#span-") + String(event.target.id)))) {
@@ -206,6 +126,12 @@ let numericFunctionNums = (event) => {
             }
         }
         else {
+            current.style.border = "red solid 2px"
+            current.style.borderRadius = "20%"
+            current.style.backgroundColor = "#ff988f"
+            setTimeout(()=>{
+                current.style.backgroundColor = ""
+            }, 1000)
             console.log(`The solution is ${solMatrix[position[1] - 1][position[3] - 1]}`)
         }
     }
@@ -361,5 +287,31 @@ let fastPencilFunction = () => {
     }
  */}
 
+ // 4_ ما بيمديني أسويها، كنت بخليها تحسب ليي عدد الحلول الممكنة لأرقام مبدئية معينة عشان أستخدمها في صناعة شبكات بأرقام بدأية عشوائية
+ let lastGame
+ let isLastGameIsGame = false
+ let solutions = () => {
+    let count = 0
+    lastGame = game
+    fastPencilFunction()
+    while (!isLastGameIsGame){
+        for (let n = 0; n <= 80; n++) {
+            //تحول من رقم إلى موقع
+            row = Math.floor(n / 9) + 1
+            colomn = Math.round((n / 9 - Math.floor(n / 9)) * 9) + 1
+            position = String("row-" + row + "-colomn-" + colomn)
+            //تستدعي الدالة الي تحط في هذا الموقع
+            pencilFunction(position)
+        }
+        if(game == lastGame){
+            isLastGameIsGame = true
+        }
+        else{
+            fastPencilFunction()
+            count++
+            console.log(count)
+        }
+    }
+ }
 squers.forEach(element => element.addEventListener("click", addPadding))
 buttons.forEach(element => element.addEventListener("click", numericFunction))
