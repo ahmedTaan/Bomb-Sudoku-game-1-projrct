@@ -96,17 +96,17 @@ let span8 = document.createElement("span")
 span8.id = "span-8", span8.textContent = "8", span8.classList = "pencil"
 let span9 = document.createElement("span")
 span9.id = "span-9", span9.textContent = "9", span9.classList = "pencil"
-span9.cloneNode(true)
 
-squers[1].appendChild(span9.cloneNode(true))
-squers[1].appendChild(span8.cloneNode(true))
-squers[1].appendChild(span7.cloneNode(true))
-squers[1].appendChild(span6.cloneNode(true))
-squers[1].appendChild(span5.cloneNode(true))
-squers[1].appendChild(span4.cloneNode(true))
-squers[1].appendChild(span3.cloneNode(true))
-squers[1].appendChild(span2.cloneNode(true))
-squers[1].appendChild(span1.cloneNode(true))
+/* squers[13].appendChild(span9.cloneNode(true))
+squers[13].appendChild(span8.cloneNode(true))
+squers[13].appendChild(span7.cloneNode(true))
+squers[13].appendChild(span6.cloneNode(true))
+squers[13].appendChild(span5.cloneNode(true))
+squers[13].appendChild(span4.cloneNode(true))
+squers[13].appendChild(span3.cloneNode(true))
+squers[13].appendChild(span2.cloneNode(true))
+squers[13].appendChild(span1.cloneNode(true))
+
 
 squers[2].appendChild(span9.cloneNode(true))
 squers[2].appendChild(span8.cloneNode(true))
@@ -118,6 +118,8 @@ squers[2].appendChild(span3.cloneNode(true))
 squers[2].appendChild(span2.cloneNode(true))
 squers[2].appendChild(span1.cloneNode(true))
 
+squers[2].removeChild(squers[2].querySelector("#span-1"))
+ */
 
 
 
@@ -132,6 +134,10 @@ let squaresForSearch = [...squers]
 let current
 let position
 let filledSquares = []
+let realPosition
+let row
+let colomn
+
 
 squaresForSearch.forEach(sqr => {
     if (Boolean(sqr.textContent)){
@@ -174,6 +180,9 @@ let numericFunctionFuns = (event) => {
 
     }
     else if (event.target.spellcheck === true) {
+        if(event.target.id == "pen"){
+            fastPencilFunction()
+        }
         event.target.spellcheck = false
     }
     else {
@@ -281,8 +290,39 @@ let checker = (num, position) => {
     }
     return (rowCodition && colomnCondition && adjacentCondition)
 }
-let winnerFunction = () => {
 
+//الدالة الي تستقبل موقع وتحط فيه الأرقام الممكنة حسب الشروط
+let pencilFunction = (position) => {
+    // تحول المكان من الصف والعمود إلى رقم من 0 إلى 80
+    realPosition = position.split("-")
+    realPosition = (Number(realPosition[1]) - 1) * 9 + Number(realPosition[3]) - 1
+    //يحذف أي بنسل موجود
+    for (let n=1; n<=9; n++){
+        if (Boolean(squers[realPosition].querySelector(String("#span-") + n))){
+        squers[realPosition].removeChild(squers[realPosition].querySelector(String("#span-") + n))
+        }
+    }
+    //يحط البنسل للأرقام الممكنة (حسب الشروط الثلاثة)
+    if(!Boolean(squers[realPosition].textContent)){
+        for (let n=1; n<=9; n++){
+        if(checker(n,position)){
+            let span = document.createElement("span")
+            span.id = String("span-" + n), span.textContent = String(n), span.classList = "pencil"
+
+            squers[realPosition].appendChild(span.cloneNode(true))
+        }
+    }
+}
+}
+
+let fastPencilFunction = () => {
+    for (let n=0; n<=80; n++){
+        //تحول من رقم إلى موقع
+        row = Math.floor(n/9) + 1
+        colomn = Math.round((n/9 - Math.floor(n/9))*9) + 1
+        position = String("row-" + row + "-colomn-" + colomn)
+        pencilFunction(position)
+    }
 }
 
 console.log(checker(1, "row-9-colomn-9"))
